@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>AES中Key的超过128的解决方式 | Nelson&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="这个问题纠结了一早上，之前这个问题解决过，但在调用jar的时候，还是报的，下面是我的解题思路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AES中Key的超过128的解决方式">
+<meta property="og:url" content="http://darker50.github.io/2016/03/31/2016-03-31-AESDecondeError/index.html">
+<meta property="og:site_name" content="Nelson's Blog">
+<meta property="og:description" content="这个问题纠结了一早上，之前这个问题解决过，但在调用jar的时候，还是报的，下面是我的解题思路">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AES中Key的超过128的解决方式">
+<meta name="twitter:description" content="这个问题纠结了一早上，之前这个问题解决过，但在调用jar的时候，还是报的，下面是我的解题思路">
+  
+    <link rel="alternative" href="/atom.xml" title="Nelson&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/header.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">darker50</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stop trying to find a rewind ,it&#39;s life,not a movie</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">HOME</a></li>
+				        
+							<li><a href="/archives">ALL</a></li>
+				        
+							<li><a href="/categories/Life">Life</a></li>
+				        
+							<li><a href="/categories/Learn">Learn</a></li>
+				        
+							<li><a href="/categories/Other">Other</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/darker50" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://www.weibo.com/u/2266975152" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/32位MD5/" style="font-size: 10px;">32位MD5</a><a href="/tags/About-Me/" style="font-size: 10px;">About Me</a><a href="/tags/Android/" style="font-size: 10px;">Android</a><a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a><a href="/tags/Ant/" style="font-size: 10px;">Ant</a><a href="/tags/Appium/" style="font-size: 10px;">Appium</a><a href="/tags/DOS/" style="font-size: 12.5px;">DOS</a><a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a><a href="/tags/IDE/" style="font-size: 10px;">IDE</a><a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a><a href="/tags/Java/" style="font-size: 12.5px;">Java</a><a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a><a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a><a href="/tags/Loop输出/" style="font-size: 10px;">Loop输出</a><a href="/tags/MD5/" style="font-size: 10px;">MD5</a><a href="/tags/Python/" style="font-size: 15px;">Python</a><a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a><a href="/tags/String/" style="font-size: 10px;">String</a><a href="/tags/Summary/" style="font-size: 20px;">Summary</a><a href="/tags/appium/" style="font-size: 10px;">appium</a><a href="/tags/blog/" style="font-size: 10px;">blog</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/hexo/" style="font-size: 10px;">hexo</a><a href="/tags/java/" style="font-size: 12.5px;">java</a><a href="/tags/python/" style="font-size: 20px;">python</a><a href="/tags/性能/" style="font-size: 10px;">性能</a><a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a><a href="/tags/总结/" style="font-size: 10px;">总结</a><a href="/tags/构造/" style="font-size: 10px;">构造</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/自动化/" style="font-size: 17.5px;">自动化</a><a href="/tags/自动打包/" style="font-size: 10px;">自动打包</a><a href="/tags/越野跑/" style="font-size: 10px;">越野跑</a><a href="/tags/马拉松/" style="font-size: 10px;">马拉松</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://xuxu1988.com">xuxu的blog</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://TesterlifeRaymond.github.io">在路上的blog</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jianbing.github.io">煎饼的blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一个可以说很笨、很傻，也可以很聪明的阳光少年，兼苦逼测试工程师</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">darker50</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img src="/img/header.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">darker50</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stop trying to find a rewind ,it&#39;s life,not a movie</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">HOME</a></li>
+		        
+					<li><a href="/archives">ALL</a></li>
+		        
+					<li><a href="/categories/Life">Life</a></li>
+		        
+					<li><a href="/categories/Learn">Learn</a></li>
+		        
+					<li><a href="/categories/Other">Other</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/darker50" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://www.weibo.com/u/2266975152" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-2016-03-31-AESDecondeError" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/31/2016-03-31-AESDecondeError/" class="article-date">
+  	<time datetime="2016-03-31T05:52:11.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AES中Key的超过128的解决方式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Learn/">Learn</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <!-- Table of Contents -->
+      
+          <div id="toc" class="toc-article">
+              <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原因"><span class="toc-number">2.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">3.</span> <span class="toc-text">解决方法</span></a></li></ol>
+          </div>
+        
+        <h2 id="介绍">介绍</h2><p><strong>维基百科说明：</strong><br>AES是Advanced Encryption Standard缩写，高级加密标准，在密码学中又称Rijindael加密法，是美国联邦政府采用的一种区块加密标准，是替代之前的DES的，属于<strong>对称密钥</strong>加密中最流行的算法之一。<br>剩下的东西有点专业，从我自己理解的角度就是说，一个字段中，截取一部分做密钥，剩下的一部分做解密的数据，剩下的不用管了，用一些自带的方法就能解决。<br>这种是128位换算方式</p>
+<blockquote>
+<p>128bits == 16Bytes == 16 Chars</p>
+</blockquote>
+<h2 id="原因">原因</h2><blockquote>
+<p>java.security.InvalidKeyException: Illegal key size or default parameters</p>
+</blockquote>
+<p>使用AES加密、解密过程中会有这个问题，原因呢是AES加密正常的要求密钥是为128位，超过128位时，就报错误咯，这个限制其实是美国对软件出口的控制，谁叫AES是美国发明的呢，但我们不是美国人，所以要解决这个问题</p>
+<h2 id="解决方法">解决方法</h2><p>就是替换jdk中下的security的local_policy.jar和US_export_policy.jar两个包<br>对应版本的下载地址：<br><a href="http://www.oracle.com/technetwork/java/javase/downloads/jce-6-download-429243.html" target="_blank" rel="external">Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 6</a></p>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html" target="_blank" rel="external">Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 7 Download</a></p>
+<p><a href="http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html" target="_blank" rel="external">Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files 8 Download</a></p>
+<p>这里有个坑<br>因为IDE调用的是${java.home}/jre/lib/security/这个目录的jar包，但当我们打成jar包的时候，运行的时候调用的就是</p>
+<blockquote>
+<p>${jre.home}/lib/security/</p>
+</blockquote>
+<p>这个目录下的那两个jar包了，所以呢，开始我就只替换javahome中的，在IDE中运行就没有问题，但打成jar后运行，还是会报密钥越界了，明白IDE和JAR包运行的环境就可以解决这个问题了，这里做个记录。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/31/2016-04-12-Jmeter/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用Jmeter解密遇见的一些坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/31/2016-03-31-SomethineAboutCode/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">关于python一些编码的问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016-03-31-AESDecondeError" data-title="AES中Key的超过128的解决方式" data-url="http://darker50.github.io/2016/03/31/2016-03-31-AESDecondeError/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Darker50
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

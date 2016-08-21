@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>关于python一些编码的问题 | Nelson&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第二次看基础的东西，每次还是有些收获的，这里记录下自己一些python中遇见的一些编码的问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于python一些编码的问题">
+<meta property="og:url" content="http://darker50.github.io/2016/03/31/2016-03-31-SomethineAboutCode/index.html">
+<meta property="og:site_name" content="Nelson's Blog">
+<meta property="og:description" content="第二次看基础的东西，每次还是有些收获的，这里记录下自己一些python中遇见的一些编码的问题。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于python一些编码的问题">
+<meta name="twitter:description" content="第二次看基础的东西，每次还是有些收获的，这里记录下自己一些python中遇见的一些编码的问题。">
+  
+    <link rel="alternative" href="/atom.xml" title="Nelson&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/img/header.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">darker50</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Stop trying to find a rewind ,it&#39;s life,not a movie</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">HOME</a></li>
+				        
+							<li><a href="/archives">ALL</a></li>
+				        
+							<li><a href="/categories/Life">Life</a></li>
+				        
+							<li><a href="/categories/Learn">Learn</a></li>
+				        
+							<li><a href="/categories/Other">Other</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/darker50" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://www.weibo.com/u/2266975152" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/32位MD5/" style="font-size: 10px;">32位MD5</a><a href="/tags/About-Me/" style="font-size: 10px;">About Me</a><a href="/tags/Android/" style="font-size: 10px;">Android</a><a href="/tags/AndroidStudio/" style="font-size: 10px;">AndroidStudio</a><a href="/tags/Ant/" style="font-size: 10px;">Ant</a><a href="/tags/Appium/" style="font-size: 10px;">Appium</a><a href="/tags/DOS/" style="font-size: 12.5px;">DOS</a><a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a><a href="/tags/IDE/" style="font-size: 10px;">IDE</a><a href="/tags/JAVA/" style="font-size: 10px;">JAVA</a><a href="/tags/Java/" style="font-size: 12.5px;">Java</a><a href="/tags/Jenkins/" style="font-size: 10px;">Jenkins</a><a href="/tags/Jmeter/" style="font-size: 10px;">Jmeter</a><a href="/tags/Loop输出/" style="font-size: 10px;">Loop输出</a><a href="/tags/MD5/" style="font-size: 10px;">MD5</a><a href="/tags/Python/" style="font-size: 15px;">Python</a><a href="/tags/Selenium/" style="font-size: 10px;">Selenium</a><a href="/tags/String/" style="font-size: 10px;">String</a><a href="/tags/Summary/" style="font-size: 20px;">Summary</a><a href="/tags/appium/" style="font-size: 10px;">appium</a><a href="/tags/blog/" style="font-size: 10px;">blog</a><a href="/tags/bug/" style="font-size: 10px;">bug</a><a href="/tags/hexo/" style="font-size: 10px;">hexo</a><a href="/tags/java/" style="font-size: 12.5px;">java</a><a href="/tags/python/" style="font-size: 20px;">python</a><a href="/tags/性能/" style="font-size: 10px;">性能</a><a href="/tags/性能测试/" style="font-size: 10px;">性能测试</a><a href="/tags/总结/" style="font-size: 10px;">总结</a><a href="/tags/构造/" style="font-size: 10px;">构造</a><a href="/tags/继承/" style="font-size: 10px;">继承</a><a href="/tags/自动化/" style="font-size: 17.5px;">自动化</a><a href="/tags/自动打包/" style="font-size: 10px;">自动打包</a><a href="/tags/越野跑/" style="font-size: 10px;">越野跑</a><a href="/tags/马拉松/" style="font-size: 10px;">马拉松</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://xuxu1988.com">xuxu的blog</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://TesterlifeRaymond.github.io">在路上的blog</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://jianbing.github.io">煎饼的blog</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">一个可以说很笨、很傻，也可以很聪明的阳光少年，兼苦逼测试工程师</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">darker50</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img src="/img/header.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">darker50</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Stop trying to find a rewind ,it&#39;s life,not a movie</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">HOME</a></li>
+		        
+					<li><a href="/archives">ALL</a></li>
+		        
+					<li><a href="/categories/Life">Life</a></li>
+		        
+					<li><a href="/categories/Learn">Learn</a></li>
+		        
+					<li><a href="/categories/Other">Other</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/darker50" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://www.weibo.com/u/2266975152" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-2016-03-31-SomethineAboutCode" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/31/2016-03-31-SomethineAboutCode/" class="article-date">
+  	<time datetime="2016-03-31T05:52:11.000Z" itemprop="datePublished">2016-03-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      关于python一些编码的问题
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Learn/">Learn</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      <!-- Table of Contents -->
+      
+          <div id="toc" class="toc-article">
+              <strong class="toc-title">文章目录</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的编码类型"><span class="toc-number">1.</span> <span class="toc-text">常见的编码类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python使用编码问题"><span class="toc-number">2.</span> <span class="toc-text">python使用编码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置方法"><span class="toc-number">3.</span> <span class="toc-text">设置方法</span></a></li></ol>
+          </div>
+        
+        <h2 id="常见的编码类型">常见的编码类型</h2><p>先说明下常用的单位换算方式：8比特（bit）=一字节（byte），大家都懂的，不同的编码就是用不同的字节来表示对应的文字，比如英文用ACSII就可以了，中文可以用Unicode、utf-8等，下面说常见的编码格式</p>
+<ul>
+<li>ASCII:最早期的编码格式，只支持大小写字母、数字加一些符号—一个字节</li>
+<li>GB2312:是中国自己定制（之后还有类似的日文的Shift_JIS、Euc-kr）—两个字节</li>
+<li>Unicode:把上面所有的编码统一上面说到的所有编码—常用两个字节，也有用四个字节的</li>
+<li>utf-8:把一个Unicode字符根据不同的数字大小编码成1-6字节，英文：1字节，汉字：3字节，有些特殊的会用到6字节</li>
+</ul>
+<p>这里主要是看到廖雪峰的字符串和编码，里面说的更清楚<br><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000" title="整个python2.7的教程" target="_blank" rel="external">点击去看，整个python2.7的教程</a></p>
+<p><strong>计算机通用的处理方式：</strong><br>在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码</p>
+<p>至于原来内存中怎么就使用Unicode编码这个问题，不管了，知道了就行了</p>
+<h2 id="python使用编码问题">python使用编码问题</h2><p>使用python我们经常会在文件的头部写这么一行，有多种写的方式，这里不列出来了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br></pre></td></tr></table></figure></p>
+<p>上面这么写的基本都可以正常的显示中文、打印中文啊，但还有一些不知道的情况，就是说不出来，结果使用下面这个方法查看，吓我一跳<br><figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="preprocessor"><span class="keyword">import</span> sys</span></span><br><span class="line"><span class="built_in">print</span> sys.getdefaultencoding()</span><br></pre></td></tr></table></figure></p>
+<p>输出的结果是ascii<br>明明是设置了，还是不生效<br>那就使用sys模块设置编码格式<br><code>sys.setdefaultenconding(&#39;utf-8&#39;)</code><br>报错了<br><code>AttributeError: &#39;module&#39; object has no attribute &#39;setdefaultencoding&#39;</code><br>在stackoverflow查到这么说了</p>
+<blockquote>
+<p>This function is only intended to be used by the site module implementation and, where needed, by sitecustomize. Once used by the site module, it is removed from the sys module’s namespace.</p>
+<p>In Python 2, using sys.setdefaultencoding() was used to plaster over implicit encoding problems (caused by concatening byte strings and unicode values, and other such mixed type situations), rather than fixing the problems themselves. Python 3 did away with implicit encoding and decoding, so using the plaster to set a different encoding would make no difference anyway.<br>However, if this is a 3rd-party library, then you probably will run into other problems as it clearly has not been made compatible with Python 3.</p>
+</blockquote>
+<p>大概就是python3编码的问题解决了，python2上还有一些编码的问题（大概就是这样，我翻译不准，下面看到别人写的原因）</p>
+<blockquote>
+<p>sys.setdefaultencoding 方法在python导入 site.py 后就删除了, 不能再被调用了.  在确定sys已经导入的情况下, 可以reload sys这个模块, 之后, 再 sys.setdefaultencoding(‘utf8’) </p>
+</blockquote>
+<p>这样基本就明白了编码的问题（第一行那个有时候生效，有时候不生效这个不知道什么原因）<br>还有上面说到的site.py是python解释器启动，默认加载的一个脚本，如果使用python -S启动，解释器启动时不会自动加载site.py</p>
+<h2 id="设置方法">设置方法</h2><p>这里是主人的链接<br><a href="http://www.cnblogs.com/harrychinese/archive/2012/01/19/change_python_default_encoding.html" target="_blank" rel="external">这里有说明</a></p>
+<ul>
+<li>方法一<br>编辑site.py， 修改setencoding()函数, 强制设置为 utf-8</li>
+<li><p>方法二<br>增加一个名为 sitecustomize.py, 推荐存放的路径为 site-packages 目录下<br>sitecustomize.py 是在 site.py 被import 执行的, 因为 sys.setdefaultencoding() 是在 site.py 的结尾处被删除的, 所以, 可以在 sitecustomize.py 使用 sys.setdefaultencoding(). 写下面的内容添加到sitecustomize.py文件中就可以了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys  </span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)   </span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法三<br>这个方法其实比较通用，在别人电脑上使用也可以<br>就是在代码中加入下面这句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reload(sys)</span><br><span class="line">sys.setdefaultencoding(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里说明下，就算你前面import sys，这里还是要reload下，要不还是使用不了setdefaultencoding方法，使用这两个方法，基本就是解决在python上的编码问题了，</p>
+<ul>
+<li>方法四<br>这个方法，哈哈，直接换到Python3,也就解决了啊，不过python3东西有点少，换过去要谨慎啊。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/31/2016-03-31-AESDecondeError/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          AES中Key的超过128的解决方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/30/2016-03-30-SummaryThreeMonth/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">16年半年的一结</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016-03-31-SomethineAboutCode" data-title="关于python一些编码的问题" data-url="http://darker50.github.io/2016/03/31/2016-03-31-SomethineAboutCode/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Darker50
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: undefined,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: undefined
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
